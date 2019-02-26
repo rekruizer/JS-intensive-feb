@@ -34,7 +34,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
             trigger.remove();
             showConfirm();
-            calcGoods(1);
 
             removeBtn.classList.add('goods__item-remove');
             removeBtn.innerHTML = '&times';
@@ -45,7 +44,7 @@ window.addEventListener('DOMContentLoaded', () => {
             if (empty) {
                 empty.style.display = 'none';
             }
-
+            calcGoods();
             calcTotal();
             removeFromCart();
         });
@@ -79,9 +78,9 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function calcGoods(i) {
+    function calcGoods() {
         const items = cartWrapper.querySelectorAll('.goods__item');
-        badge.textContent = i + items.length;
+        badge.textContent = items.length;
     }
 
     function calcTotal() {
@@ -100,7 +99,7 @@ window.addEventListener('DOMContentLoaded', () => {
             btn.addEventListener('click',() => {
                 btn.parentElement.remove();
                 let cartItems = cartWrapper.querySelectorAll('.goods__item');
-                calcGoods(0);
+                calcGoods();
                 calcTotal();
 
                 if (cartItems.length == 0) {
